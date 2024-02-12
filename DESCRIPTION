@@ -1,0 +1,28 @@
+Package: LIMBARE
+Type: Package
+Title: LIMBARE: an Advanced Linear Mixed-effects Breakpoint Analysis with Robust Estimation Method
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "TingFang",
+           family = "Lee",
+           role = c("aut", "cre"),
+           email = "Ting-Fang.Lee@nyulangone.org"),
+    person(given = "Yan",
+           family = "Zhang",
+           role = "aut"),
+    person(given = "Jiyuan",
+           family = "Hu",
+           role = "aut"))
+Maintainer: TingFang Lee <Ting-Fang.Lee@nyulangone.org>
+Description: LIMBARE is an advanced linear mixed-effects breakpoint analysis with robust estimation, especially designed for longitudinal studies which accommodates repeated measurements, and effectively address the presence of outliers.
+Depends: segmented, dplyr, nlme, ggplot2
+License: `use_mit_license()`
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3

@@ -1,0 +1,39 @@
+---
+title: "introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(LIMBARE)
+```
+
+```{r}
+obs_data=sample_data
+
+mixed.model=lme(y~x+duration, random = ~1|Subject_ID/Eye, data=obs_data, na.action = na.omit)
+model=limbare(mixed.model, seg.Z = ~x, npsi=list(x=1), alpha=0.9, tol = 0.005, max.iter = 200)
+
+model$psi
+summary(model$model)
+```
+
+```{r}
+slope(model = model, seg.Z = ~x)
+```
+
+```{r}
+plot.limbare(model, seg.Z = ~x, intercept = 50, break.point = T,              break.point.CI = T, color = "red")+
+   geom_point(data=obs_data, aes(x, y), color = "red")+
+   geom_point(data = model$data, aes(x, y))
+```
